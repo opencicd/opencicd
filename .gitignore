@@ -3,3 +3,6 @@ out
 
 # protoc files
 *.pb.go
+
+# ginkgo
+*.coverprofile

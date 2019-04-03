@@ -28,5 +28,8 @@ BUILD := $(VERSION) $(GIT_VERSION) $(shell go version)
 GOLDFLAGS := -X "github.com/opencicd/opencicd/pkg/version.BuildVersion=$(BUILD)"
 GOBUILD := -ldflags '$(GOLDFLAGS)' $(EXTRA_GOBUILD_FLAGS)
 
+# Ginkgo config
+GINKGO ?= ginkgo
+
 # Prototool config
 PROTOTOOL ?= prototool

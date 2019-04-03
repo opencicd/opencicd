@@ -15,6 +15,10 @@
 # Include
 include ./Makefile.defs
 
+# Target all
+.PHONY: all
+all: build
+
 # Target proto
 .PHONY: proto
 proto:
@@ -27,6 +31,16 @@ build: proto
 		$(MAKE) -C $$i build; \
 	done
 
+# Target test
+.PHONY: test
+test:
+	$(GINKGO) -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress --compilers=2
+
+# Target test-watch
+.PHONY: test-watch
+test-watch:
+	$(GINKGO) watch -r
+
 # Target clean
 .PHONY: clean
 clean:
@@ -35,6 +49,9 @@ clean:
 
 	@echo Deleting generated protobuf files
 	@find ./api -name *.pb.go -delete
+
+	@echo Deleting cover files
+	@find ./ -name *.coverprofile -delete
 	
 	@for i in $(CMD_SUBDIRS); do \
 		$(MAKE) -C $$i clean; \

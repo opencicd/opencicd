@@ -16,3 +16,7 @@ package version
 
 // BuildVersion injected by the golang compiler
 var BuildVersion string
+
+// Version defines a version object that holds build information
+type Version struct {
+}
