@@ -5,4 +5,5 @@ out
 *.pb.go
 
 # ginkgo
+.cover
 *.coverprofile

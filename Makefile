@@ -33,8 +33,9 @@ build: proto
 
 # Target test
 .PHONY: test
-test:
-	$(GINKGO) -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress --compilers=2
+test: proto
+	mkdir -p $(COVER_DIR)
+	$(GINKGO) -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress --compilers=2 -outputdir=$(COVER_DIR) -coverprofile=cover.coverprofile
 
 # Target test-watch
 .PHONY: test-watch
@@ -52,7 +53,29 @@ clean:
 
 	@echo Deleting cover files
 	@find ./ -name *.coverprofile -delete
+	@rm -Rf $(COVER_DIR)
 	
 	@for i in $(CMD_SUBDIRS); do \
 		$(MAKE) -C $$i clean; \
 	done
+
+# Target deps
+.PHONY: deps
+deps:
+	# protoc
+	PROTOC_ZIP=protoc-3.7.1-linux-x86_64.zip
+	curl -OL https://github.com/google/protobuf/releases/download/v3.7.1/protoc-3.7.1-linux-x86_64.zip
+	sudo unzip -o protoc-3.7.1-linux-x86_64.zip -d /usr/local bin/protoc
+	rm -f protoc-3.7.1-linux-x86_64.zip
+
+	# gogoproto
+	go get github.com/gogo/protobuf/proto
+	go get github.com/gogo/protobuf/protoc-gen-gogoslick
+	go get github.com/gogo/protobuf/gogoproto
+
+	# prototool
+	go get github.com/uber/prototool/cmd/prototool
+
+	# ginkgo
+	go get github.com/onsi/ginkgo/ginkgo
+	go get github.com/onsi/gomega/...

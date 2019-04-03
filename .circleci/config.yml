@@ -1,0 +1,17 @@
+# Golang CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-go/ for more details
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.4
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.12.1
+    steps:
+      - checkout
+      - run: make deps
+      - run: make test
+      - run: make
+      - codecov/upload:
+          file: .cover/cover.coverprofile

@@ -20,3 +20,13 @@ var BuildVersion string
 // Version defines a version object that holds build information
 type Version struct {
 }
+
+// FromString parses a version string to a version object
+func FromString(v string) Version {
+	return Version{}
+}
+
+// ToString converts a version object to a string
+func ToString(v Version) string {
+	return ""
+}
