@@ -19,7 +19,7 @@ import (
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
 
-	. "github.com/opencicd/opencicd/pkg/version"
+	. "github.com/opencicd/opencicd/pkg/v1/version"
 )
 
 var _ = Describe("Version", func() {

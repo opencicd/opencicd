@@ -17,7 +17,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/opencicd/opencicd/pkg/version"
+	"github.com/opencicd/opencicd/pkg/v1/version"
 )
 
 func main() {
