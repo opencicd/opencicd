@@ -22,4 +22,10 @@ import (
 
 func main() {
 	fmt.Println("identity-svc:", version.BuildVersion)
+
+	/*
+		resource := user.NewResourceMongo()
+		controller := user.NewController(resource)
+		service := user.NewService(controller)
+	*/
 }
