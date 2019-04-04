@@ -21,7 +21,11 @@ option java_multiple_files = true;
 option java_outer_classname = "UserApiProto";
 option java_package = "com.opencicd.v1.identity";
 
+import "api/proto/v1/core/get_options.proto";
+import "api/proto/v1/core/list_options.proto";
+import "api/proto/v1/core/update_options.proto";
 import "api/proto/v1/identity/user.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 
 service UserAPI {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
@@ -39,14 +43,17 @@ message CreateUserResponse {
   opencicd.v1.identity.User user = 1;
 }
 
-message ListUsersRequest {}
+message ListUsersRequest {
+  opencicd.v1.core.ListOptions options = 1;
+}
 
 message ListUsersResponse {
   repeated opencicd.v1.identity.User users = 1;
 }
 
 message GetUserRequest {
-  string id = 1;
+  string id = 1 [(gogoproto.customname) = "ID"];
+  opencicd.v1.core.GetOptions options = 2;
 }
 
 message GetUserResponse {
@@ -54,8 +61,8 @@ message GetUserResponse {
 }
 
 message UpdateUserRequest {
-  string id = 1;
-  opencicd.v1.identity.User user = 2;
+  opencicd.v1.identity.User user = 1;
+  opencicd.v1.core.UpdateOptions options = 2;
 }
 
 message UpdateUserResponse {
@@ -63,7 +70,7 @@ message UpdateUserResponse {
 }
 
 message DeleteUserRequest {
-  string id = 1;
+  string id = 1 [(gogoproto.customname) = "ID"];
 }
 
 message DeleteUserResponse {}

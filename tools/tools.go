@@ -4,7 +4,7 @@
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+//     http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,20 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-syntax = "proto3";
-
-package opencicd.v1.identity;
-
-option go_package = "identitypb";
-option java_multiple_files = true;
-option java_outer_classname = "UserProto";
-option java_package = "com.opencicd.v1.identity";
-
-import "api/proto/v1/core/meta.proto";
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
-
-message User {
-  string id = 1 [(gogoproto.customname) = "ID"];
-  string name = 2;
-  opencicd.v1.core.Meta meta = 3;
-}
+package tools

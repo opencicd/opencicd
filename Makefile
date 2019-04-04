@@ -22,7 +22,7 @@ all: build
 # Target proto
 .PHONY: proto
 proto:
-	$(PROTOTOOL) all
+	./scripts/generate_proto.sh
 
 # Target clean
 .PHONY: build

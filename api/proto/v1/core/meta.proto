@@ -14,18 +14,17 @@
 
 syntax = "proto3";
 
-package opencicd.v1.identity;
+package opencicd.v1.core;
 
-option go_package = "identitypb";
+option go_package = "corepb";
 option java_multiple_files = true;
-option java_outer_classname = "UserProto";
-option java_package = "com.opencicd.v1.identity";
+option java_outer_classname = "MetaProto";
+option java_package = "com.opencicd.v1.core";
 
-import "api/proto/v1/core/meta.proto";
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "google/protobuf/timestamp.proto";
 
-message User {
-  string id = 1 [(gogoproto.customname) = "ID"];
-  string name = 2;
-  opencicd.v1.core.Meta meta = 3;
+message Meta {
+  google.protobuf.Timestamp created = 1 [(gogoproto.stdtime) = true];
+  google.protobuf.Timestamp updated = 2 [(gogoproto.stdtime) = true];
 }

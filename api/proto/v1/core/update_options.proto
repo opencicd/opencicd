@@ -14,18 +14,15 @@
 
 syntax = "proto3";
 
-package opencicd.v1.identity;
+package opencicd.v1.core;
 
-option go_package = "identitypb";
+option go_package = "corepb";
 option java_multiple_files = true;
-option java_outer_classname = "UserProto";
-option java_package = "com.opencicd.v1.identity";
+option java_outer_classname = "UpdateOptionsProto";
+option java_package = "com.opencicd.v1.core";
 
-import "api/proto/v1/core/meta.proto";
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "google/protobuf/field_mask.proto";
 
-message User {
-  string id = 1 [(gogoproto.customname) = "ID"];
-  string name = 2;
-  opencicd.v1.core.Meta meta = 3;
+message UpdateOptions {
+  google.protobuf.FieldMask update_mask = 1;
 }

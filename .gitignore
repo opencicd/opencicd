@@ -3,7 +3,11 @@
 
 # protoc files
 *.pb.go
+.prototool.json
 
 # ginkgo
 .cover
 *.coverprofile
+
+#vscode
+.vscode
