@@ -15,13 +15,40 @@
 package user_test
 
 import (
-	"testing"
-
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+
+	. "github.com/opencicd/opencicd/internal/identity-svc/user"
 )
 
-func TestUser(t *testing.T) {
-	RegisterFailHandler(Fail)
-	RunSpecs(t, "User Suite")
-}
+var _ = Describe("Service", func() {
+
+	Describe("NewService", func() {
+
+		It("Should create a new instance", func() {
+			c := NewService(nil)
+
+			Expect(c).NotTo(BeNil())
+		})
+	})
+
+	Describe("CreateUser", func() {
+
+	})
+
+	Describe("ListUsers", func() {
+
+	})
+
+	Describe("GetUser", func() {
+
+	})
+
+	Describe("UpdateUser", func() {
+
+	})
+
+	Describe("DeleteUser", func() {
+
+	})
+})

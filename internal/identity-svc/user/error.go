@@ -12,16 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package user_test
+package user
 
-import (
-	"testing"
+import "errors"
 
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
+// Error definitions
+var (
+	ErrNotFound = errors.New("User not found")
 )
-
-func TestUser(t *testing.T) {
-	RegisterFailHandler(Fail)
-	RunSpecs(t, "User Suite")
-}
