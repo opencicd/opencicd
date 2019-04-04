@@ -1,5 +1,5 @@
 # build dir
-out
+.out
 
 # protoc files
 *.pb.go
