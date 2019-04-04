@@ -13,3 +13,7 @@
 // limitations under the License.
 
 package tools
+
+import (
+	_ "github.com/gogo/protobuf/gogoproto"
+)

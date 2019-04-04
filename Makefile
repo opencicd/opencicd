@@ -22,7 +22,7 @@ all: build
 # Target proto
 .PHONY: proto
 proto:
-	./scripts/generate_proto.sh
+	$(PROTOTOOL) all
 
 # Target clean
 .PHONY: build
@@ -79,3 +79,6 @@ deps:
 	# ginkgo
 	go get github.com/onsi/ginkgo/ginkgo
 	go get github.com/onsi/gomega/...
+
+	# go mod
+	go mod vendor
