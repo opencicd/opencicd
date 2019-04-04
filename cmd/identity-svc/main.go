@@ -15,17 +15,22 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/opencicd/opencicd/pkg/v1/version"
+	"github.com/opencicd/opencicd/internal/identity-svc/user"
+	"github.com/opencicd/opencicd/pkg/v1/stack"
 )
 
 func main() {
-	fmt.Println("identity-svc:", version.BuildVersion)
+	s := stack.New()
+	defer s.MustClose()
 
-	/*
-		resource := user.NewResourceMongo()
-		controller := user.NewController(resource)
-		service := user.NewService(controller)
-	*/
+	resource := user.NewResourceMongo()
+	s.MustInit(resource)
+
+	controller := user.NewController(resource)
+	s.MustInit(controller)
+
+	service := user.NewService(controller)
+	s.MustInit(service)
+
+	s.MustRun()
 }

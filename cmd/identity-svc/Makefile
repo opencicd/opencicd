@@ -32,4 +32,3 @@ build-docker:
 .PHONY: clean
 clean:
 	@echo Clean $(TARGET)
-	@$(GO) clean
